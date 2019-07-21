@@ -1,8 +1,8 @@
 /* eslint global-require: off */
 
-const developmentEnvironments = ['development', 'test'];
+const developmentEnvironments = ['development', 'test']
 
-const developmentPlugins = [require('react-hot-loader/babel')];
+const developmentPlugins = [require('react-hot-loader/babel')]
 
 const productionPlugins = [
   require('babel-plugin-dev-expression'),
@@ -10,13 +10,13 @@ const productionPlugins = [
   // babel-preset-react-optimize
   require('@babel/plugin-transform-react-constant-elements'),
   require('@babel/plugin-transform-react-inline-elements'),
-  require('babel-plugin-transform-react-remove-prop-types')
-];
+  require('babel-plugin-transform-react-remove-prop-types'),
+]
 
 module.exports = api => {
   // see docs about api at https://babeljs.io/docs/en/config-files#apicache
 
-  const development = api.env(developmentEnvironments);
+  const development = api.env(developmentEnvironments)
 
   return {
     presets: [
@@ -25,13 +25,20 @@ module.exports = api => {
         {
           targets: { electron: require('electron/package.json').version },
           useBuiltIns: 'usage',
-          corejs: 3
-        }
+          corejs: 3,
+        },
       ],
       require('@babel/preset-typescript'),
-      [require('@babel/preset-react'), { development }]
+      [require('@babel/preset-react'), { development }],
     ],
     plugins: [
+      [
+        require('babel-plugin-import'),
+        {
+          libraryName: 'antd',
+          style: true,
+        },
+      ],
       // Stage 0
       require('@babel/plugin-proposal-function-bind'),
 
@@ -41,11 +48,11 @@ module.exports = api => {
       [require('@babel/plugin-proposal-optional-chaining'), { loose: false }],
       [
         require('@babel/plugin-proposal-pipeline-operator'),
-        { proposal: 'minimal' }
+        { proposal: 'minimal' },
       ],
       [
         require('@babel/plugin-proposal-nullish-coalescing-operator'),
-        { loose: false }
+        { loose: false },
       ],
       require('@babel/plugin-proposal-do-expressions'),
 
@@ -62,7 +69,7 @@ module.exports = api => {
       [require('@babel/plugin-proposal-class-properties'), { loose: true }],
       require('@babel/plugin-proposal-json-strings'),
 
-      ...(development ? developmentPlugins : productionPlugins)
-    ]
-  };
-};
+      ...(development ? developmentPlugins : productionPlugins),
+    ],
+  }
+}

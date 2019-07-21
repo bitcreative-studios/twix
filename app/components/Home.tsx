@@ -1,7 +1,7 @@
-import  React,{Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 const routes = require('../constants/routes.json')
-const styles = require('./Home.css')
+const styles = require('./Home.scss')
 
 type Props = {}
 

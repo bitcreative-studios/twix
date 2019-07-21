@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from 'antd'
 
 const routes = require('../constants/routes.json')
-const styles = require('./Counter.css')
+const styles = require('./Counter.scss')
 
 type Props = {
   increment: () => void
