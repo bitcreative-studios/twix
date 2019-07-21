@@ -1,6 +1,6 @@
 # Twix : Twitch.tv for Linux
 
-[![Build Status](https://travis-ci.com/bitwhys/twix.svg?branch=master)](https://travis-ci.com/bitwhys/twix)
+[![Build Status](https://travis-ci.org/bitwhys/twix.svg?branch=master)](https://travis-ci.org/bitwhys/twix)
 
 ## Todo
 
