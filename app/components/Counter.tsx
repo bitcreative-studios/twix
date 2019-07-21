@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 const routes = require('../constants/routes.json')

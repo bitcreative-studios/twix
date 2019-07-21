@@ -1,5 +1,6 @@
-import * as React from 'react'
+import React from 'react'
 
+// TODO: this currently has very little purpose...refactor ?
 export default class App extends React.Component {
   render() {
     const { children } = this.props

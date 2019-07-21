@@ -13,19 +13,19 @@ interface DecrementAction {
 
 export type CounterTypes = IncrementAction | DecrementAction
 
-export function increment() {
+export const increment = () => {
   return {
     type: CounterTypeKeys.INCREMENT_COUNTER,
   }
 }
 
-export function decrement() {
+export const decrement = () => {
   return {
     type: CounterTypeKeys.DECREMENT_COUNTER,
   }
 }
 
-export function incrementIfOdd() {
+export const incrementIfOdd = () => {
   return (dispatch, getState) => {
     const { counter } = getState()
 
@@ -37,7 +37,7 @@ export function incrementIfOdd() {
   }
 }
 
-export function incrementAsync(delay: number = 1000) {
+export const incrementAsync = (delay: number = 1000) => {
   return dispatch => {
     setTimeout(() => {
       dispatch(increment())
