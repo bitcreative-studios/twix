@@ -4,6 +4,7 @@
 
 import path from 'path'
 import webpack from 'webpack'
+import AntdScssThemePlugin from 'antd-scss-theme-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
@@ -13,6 +14,14 @@ import baseConfig from './webpack.config.base'
 import CheckNodeEnv from '../internals/scripts/CheckNodeEnv'
 
 CheckNodeEnv('production')
+
+const lessLoader = AntdScssThemePlugin.themify({
+  loader: 'less-loader',
+  options: {
+    sourceMap: process.env.NODE_ENV !== 'production' || false,
+    javascriptEnabled: true,
+  },
+})
 export default merge.smart(baseConfig, {
   devtool: 'source-map',
 
@@ -59,7 +68,7 @@ export default merge.smart(baseConfig, {
             loader: 'css-loader',
             options: {
               modules: true,
-              // localIdentName: '[name]__[local]__[hash:base64:5]',
+              localIdentName: '[name]__[local]__[hash:base64:5]',
               sourceMap: true,
             },
           },
@@ -99,7 +108,7 @@ export default merge.smart(baseConfig, {
             options: {
               modules: true,
               importLoaders: 1,
-              // localIdentName: '[name]__[local]__[hash:base64:5]',
+              localIdentName: '[name]__[local]__[hash:base64:5]',
               sourceMap: true,
             },
           },

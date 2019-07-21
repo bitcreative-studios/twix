@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Button } from 'antd'
 
 const routes = require('../constants/routes.json')
 const styles = require('./Counter.css')
@@ -35,38 +36,28 @@ export default class Counter extends Component<Props> {
           {counter}
         </div>
         <div className={styles.btnGroup}>
-          <button
-            className={styles.btn}
+          <Button
             onClick={increment}
             data-tclass="btn"
-            type="button"
-          >
-            <i className="fa fa-plus" />
-          </button>
-          <button
-            className={styles.btn}
+            type="primary"
+            icon="plus"
+          />
+          <Button
             onClick={decrement}
             data-tclass="btn"
-            type="button"
-          >
-            <i className="fa fa-minus" />
-          </button>
-          <button
-            className={styles.btn}
-            onClick={incrementIfOdd}
-            data-tclass="btn"
-            type="button"
-          >
+            type="primary"
+            icon="minus"
+          />
+          <Button onClick={incrementIfOdd} data-tclass="btn" type="primary">
             odd
-          </button>
-          <button
-            className={styles.btn}
+          </Button>
+          <Button
             onClick={() => incrementAsync()}
             data-tclass="btn"
-            type="button"
+            type="primary"
           >
             async
-          </button>
+          </Button>
         </div>
       </div>
     )

@@ -2,9 +2,19 @@
  * Base webpack config used across other specific configs
  */
 
+import AntdScssThemePlugin from 'antd-scss-theme-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import { dependencies } from '../package.json'
+
+const lessLoader = AntdScssThemePlugin.themify({
+  loader: 'less-loader',
+  options: {
+    sourceMap: process.env.NODE_ENV !== 'production' || false,
+    javascriptEnabled: true,
+  },
+})
 
 export default {
   externals: [...Object.keys(dependencies || {})],
@@ -22,6 +32,22 @@ export default {
             },
           },
           'ts-loader',
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'sass-loader',
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              modules: false,
+              sourceMap: process.env.NODE_ENV !== 'production' || false,
+            },
+          },
+          lessLoader,
         ],
       },
     ],
