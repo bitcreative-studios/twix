@@ -8,11 +8,13 @@
  * When running `yarn build` or `yarn build-main`, this file is compiled to
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  */
+import path from 'path'
 import { app, BrowserWindow } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 import MenuBuilder from './menu'
 
+const APP_ROOT = path.resolve(__dirname, '..')
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = 'info'
@@ -74,7 +76,7 @@ app.on('ready', async () => {
     },
   })
 
-  mainWindow.loadURL(`file://${__dirname}/app.html`)
+  mainWindow.loadURL(`file://${APP_ROOT}/app.html`)
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
